@@ -1,14 +1,12 @@
 package cn.yuan.banner;
 
 
-import android.os.Bundle;
+import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
+import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -24,7 +22,7 @@ import java.util.List;
  * Created by yukuo on 2016/5/10.
  * 这是一个横向滚动的viewpager
  */
-public class BannerViewPager extends Fragment implements ViewPager.OnPageChangeListener {
+public class BannerViewPager extends LinearLayout implements ViewPager.OnPageChangeListener {
     private OnItemClickListener onItemClickListener;
     private FrameLayout fl_banner_viewpager;
     private LinearLayout ll_scroll_banner_indicator;
@@ -68,15 +66,25 @@ public class BannerViewPager extends Fragment implements ViewPager.OnPageChangeL
         }
     };
 
+    public BannerViewPager(Context context) {
+        super(context);
+        init(context);
+    }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = View.inflate(getActivity(), R.layout.view_scrollbanner, null);
+    public BannerViewPager(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }
+
+    private void init(Context context) {
+        //设置宽高
+        setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        View view = View.inflate(context, R.layout.view_scrollbanner, null);
         fl_banner_viewpager = (FrameLayout) view.findViewById(R.id.fl_banner_viewpager);
         vp_banner = (SetingScrollBanner) view.findViewById(R.id.vp_banner);
         ll_scroll_banner_indicator = (LinearLayout) view.findViewById(R.id.ll_scroll_banner_indicator);
-        return view;
+        addView(view);
     }
 
     /**
@@ -151,7 +159,7 @@ public class BannerViewPager extends Fragment implements ViewPager.OnPageChangeL
             indicators = new ImageView[ivSize - 2];
         ll_scroll_banner_indicator.removeAllViews();
         for (int i = 0; i < indicators.length; i++) {
-            View view = View.inflate(getActivity(), R.layout.view_banner_viewpager_indicator, null);
+            View view = View.inflate(getContext(), R.layout.view_banner_viewpager_indicator, null);
             indicators[i] = (ImageView) view.findViewById(R.id.iv_baner_indicator);
             ll_scroll_banner_indicator.addView(view);
         }
@@ -209,7 +217,7 @@ public class BannerViewPager extends Fragment implements ViewPager.OnPageChangeL
 
         @Override
         public void run() {
-            if (getActivity() != null && !getActivity().isFinishing()
+            if (getContext() != null
                     && isWheel) {
                 long now = System.currentTimeMillis();
                 // 检测上一次滑动时间与本次之间是否有触击(手滑动)操作，有的话等待下次轮播

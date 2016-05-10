@@ -3,9 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fragment
+    <!--<fragment-->
+        <!--android:id="@+id/fl_banner"-->
+        <!--android:name="cn.yuan.banner.BannerViewPager"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="280dip" />-->
+    <cn.yuan.banner.BannerViewPager
         android:id="@+id/fl_banner"
-        android:name="cn.yuan.banner.BannerViewPager"
         android:layout_width="match_parent"
-        android:layout_height="280dip" />
+        android:layout_height="180dp"/>
 </RelativeLayout>
