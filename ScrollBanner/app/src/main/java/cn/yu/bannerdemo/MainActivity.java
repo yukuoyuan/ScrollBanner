@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        cycleViewPager = (BannerViewPager) getFragmentManager()
+        cycleViewPager = (BannerViewPager) getSupportFragmentManager()
                 .findFragmentById(R.id.fl_banner);
         for (int i = 0; i < imageUrls.length; i++) {
             infos.add(imageUrls[i]);
