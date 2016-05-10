@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         }
         // 将第一个ImageView添加进来
         views.add(ViewFactory.getImageView(this, infos.get(0)));
-        cycleViewPager.setWheel(true);
         // 在加载数据前设置是否循环
         cycleViewPager.setData(views, infos, new BannerViewPager.OnItemClickListener() {
             @Override
@@ -46,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, postion + "", Toast.LENGTH_SHORT).show();
             }
         });
-//        cycleViewPager.setLoop(true);
+        //开始轮播
+        cycleViewPager.setWheel(true);
         // 设置轮播时间，默认3000ms
         cycleViewPager.setScrollTime(2000);
         //设置圆点指示图标组居中显示，默认靠右
