@@ -17,6 +17,7 @@ public class SetingScrollBanner extends ViewPager {
     public SetingScrollBanner(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
+
     private boolean scrollable = true;
 
 
