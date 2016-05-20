@@ -144,13 +144,16 @@ public class BannerViewPager extends LinearLayout implements ViewPager.OnPageCha
          */
         if (list.size() == 1) {
             setScrollable(false);
+            isWheel = false;
             ll_scroll_banner_indicator.setVisibility(View.GONE);
+            this.imageViews.add(views.get(0));
+        }else{
+            //添加数据
+            for (ImageView item : views) {
+                this.imageViews.add(item);
+            }
+        }
 
-        }
-        //添加数据
-        for (ImageView item : views) {
-            this.imageViews.add(item);
-        }
         //设置指示器
         int ivSize = views.size();
         indicators = new ImageView[ivSize];

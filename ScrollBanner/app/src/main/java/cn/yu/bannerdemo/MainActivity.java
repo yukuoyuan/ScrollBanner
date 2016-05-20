@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
             "http://img4.imgtn.bdimg.com/it/u=2068775265,2208926539&fm=21&gp=0.jpg",
             "http://pic.58pic.com/58pic/13/07/98/58PIC8r58PICy3w_1024.jpg",
             "http://img1.imgtn.bdimg.com/it/u=1459694053,2159023530&fm=21&gp=0.jpg"};
+   // private String[] imageUrls = {"http://pic7.nipic.com/20100525/4796759_105030008376_2.jpg"};
     private List<ImageView> views = new ArrayList<ImageView>();
     private List<String> infos = new ArrayList<String>();
 
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        cycleViewPager= (BannerViewPager) findViewById(R.id.fl_banner);
+        cycleViewPager = (BannerViewPager) findViewById(R.id.fl_banner);
         for (int i = 0; i < imageUrls.length; i++) {
             infos.add(imageUrls[i]);
         }
